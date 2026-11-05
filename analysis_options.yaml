@@ -1,0 +1,12 @@
+# Dart 静态分析入口；沿用 Flutter lint 集，不覆盖第三方和生成的原生工程。
+include: package:flutter_lints/flutter.yaml
+
+analyzer:
+  exclude:
+    - build/**
+    - android/**
+    - ios/**
+
+linter:
+  # 需要新增规则时在此说明原因；本轮不改变既有规则。
+  rules:

@@ -1,0 +1,4 @@
+# 只格式化暂存的 Dart/JSON，再对 App 运行静态分析和既有测试。
+npx lint-staged
+flutter analyze
+flutter test

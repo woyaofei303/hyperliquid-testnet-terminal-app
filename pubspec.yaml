@@ -1,0 +1,62 @@
+name: hyperliquid_testnet_terminal
+description: "A new Flutter project."
+# 私有 App，不发布到 pub.dev。
+publish_to: 'none'
+
+# 1.0.0 是展示版本，+1 是构建号；Flutter 会传给 Android 和 iOS。
+version: 1.0.0+1
+
+# SDK 约束随代码维护；升级依赖不等于升级 Flutter 自带的 Dart。
+environment:
+  sdk: ^3.13.7
+
+# App 的 Dart 包依赖，实际解析版本记录在 pubspec.lock。
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.8
+  # 测试网 HTTP、WebSocket、订单 wire 与 EIP-712 签名能力。
+  hyperliquid_dart: ^0.17.0
+  # 唯一 K 线内核；业务指标与绘图代理放在 lib/src/chart。
+  kline_flutter: ^0.5.1
+  # 唤起外部钱包，Project ID 通过 --dart-define 提供。
+  reown_appkit: ^1.9.0
+  # 钱包私钥与待核对记录交给系统安全存储，不能写入普通偏好。
+  flutter_secure_storage: ^10.3.4
+  # 本地签名前进行设备认证，仍须验证原生配置和真机行为。
+  local_auth: ^3.0.2
+  # 创建及校验助记词，派生路径由 key_derivation.dart 固定。
+  bip39_mnemonic: ^4.1.0
+  # 本地钱包发送 EVM 交易；与交易所 action 签名分开处理。
+  web3dart: ^3.0.3
+  # 钱包辅助工具，当前用于链上 calldata 的十六进制字节转换。
+  wallet: ^0.0.18
+  # 资金流程的 JSON-RPC 与跨链索引查询。
+  http: ^1.6.0
+  # 从 seed 沿 BIP-32 路径推导私钥。
+  bip32_keys: ^3.1.4
+  # 交易与资金金额的十进制运算，避免 double 舍入。
+  decimal: ^3.2.6
+  # 仅用于展示价格、数量和时间，不参与签名金额计算。
+  intl: ^0.20.3
+  # 保存图表快捷周期等非敏感偏好。
+  shared_preferences: ^2.5.6
+  # 展示本地及远程币种 SVG 图标。
+  flutter_svg: ^2.3.2
+  # 可选云端异常出口；未提供 SENTRY_DSN 时只做本地诊断。
+  sentry_flutter: ^10.3.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  # 静态检查规则，入口为 analysis_options.yaml。
+  flutter_lints: ^6.0.0
+
+flutter:
+
+  # 打包 Material 图标字体；币种 SVG 则来自下方 assets。
+  uses-material-design: true
+  assets:
+    - assets/coins/

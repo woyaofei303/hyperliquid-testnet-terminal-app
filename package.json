@@ -1,0 +1,17 @@
+{
+  "name": "hyperliquid-testnet-terminal-app-quality",
+  "private": true,
+  "scripts": {
+    "prepare": "husky",
+    "check": "dart format --set-exit-if-changed lib test && flutter analyze && flutter test"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.3.8",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.2.6"
+  },
+  "lint-staged": {
+    "*.dart": "dart format",
+    "*.json": "biome check --write"
+  }
+}
